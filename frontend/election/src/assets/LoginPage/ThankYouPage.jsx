@@ -7,7 +7,7 @@ const ThankYouPage = () => {
         localStorage.clear();
       const timer=setTimeout(()=>{
         navigate("/",{ replace: true });
-      },30000000);
+      },5000);
     }, [])
     
   return (

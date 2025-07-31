@@ -7,8 +7,10 @@ import Culturals from '../Nominations/Culturals.jsx'
 import Creatives from '../Nominations/Creative.jsx'
 import TechLiteraryAlumni from '../Nominations/TechLiteraryAlumni.jsx'
 import ExternalTreasurer from '../Nominations/ExternalTreasurer.jsx'
+import axios from 'axios'
 
 const Vote = () => {
+    const navigate=useNavigate();
     const [Done, setDone] = useState(false);
     const [DR1, setDR1] = useState("");
     const [DR2, setDR2] = useState("");
@@ -36,18 +38,43 @@ const Vote = () => {
     }, [])
     
     async function SubmitVoting() {
-        const FullVote=[DR1,DR2,ADR1,ADR2,Sports1,Sports2,Sports3,Cult1,Cult2,Cult3,Creative1,Creative2,Creative3,Technical,Alumni,Treasurer,Literary,External];
+        const FullVotes=[DR1,DR2,ADR1,ADR2,Sports1,Sports2,Sports3,Cult1,Cult2,Cult3,Creative1,Creative2,Creative3,Technical,Alumni,Treasurer,Literary,External];
         for(let i=0;i<18;i++){
-            if(FullVote[i]==""){
+            if(FullVotes[i]==""){
                 alert("please Vote for All Candidates");
                 return;
             }
         }
-        //SEND RESPONSE TO SERVER
-        //5 SEC THANK YOU PAGE THEN 
-        // LOCAL STORAGE CLEAR
-        //REDIRECT TO HOME
-        console.log(FullVote);
+        const token=localStorage.getItem("token");
+        const email=localStorage.getItem("email");
+        axios.post("http://localhost:8080/api/vote/seniors",{
+            "email":`${email}`,
+            "rollNo":`${email.substring(7,10)}`,
+            "dr":`${FullVotes[0]}`,
+            "ldr":`${FullVotes[1]}`,
+            "adrA":`${FullVotes[2]}`,
+            "adrB":`${FullVotes[3]}`,
+            "sportsBoysOne":`${FullVotes[4]}`,
+            "sportsBoysTwo":`${FullVotes[5]}`,
+            "sportsGirl":`${FullVotes[6]}`,
+            "culturalOne":`${FullVotes[7]}`,
+            "culturalTwo":`${FullVotes[8]}`,
+            "culturalThree":`${FullVotes[9]}`,
+            "creativeOne":`${FullVotes[10]}`,
+            "creativeTwo":`${FullVotes[11]}`,
+            "creativeThree":`${FullVotes[12]}`,
+            "technical":`${FullVotes[13]}`,
+            "literary":`${FullVotes[16]}`,
+            "alumni":`${FullVotes[14]}`,
+            "external":`${FullVotes[17]}`,
+            "treasurer":`${FullVotes[15]}`
+        },{params:{token:token}}).then(response=>{
+            console.log(response.data);
+            navigate("/ThankYou");
+        }).catch(error=>{
+            alert(error);
+        });
+        console.log(FullVotes);
         setDone(true);
     }
     if(Done)return <ThankYouPage/>
