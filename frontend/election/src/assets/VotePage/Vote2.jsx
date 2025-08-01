@@ -62,7 +62,7 @@ const Vote2 = ({setSecondYear,setdepartmental}) => {
         // }
         
         const token=localStorage.getItem("token");
-        axios.post("http://localhost:8080/api/vote/juniors",{
+        axios.post(`${process.env.VITE_BACKEND_API}/api/vote/juniors`,{
             "email":`${email}`,
             "rollNo":`${email.substring(7,10)}`,
             "cr":`${FullVote[0]}`,

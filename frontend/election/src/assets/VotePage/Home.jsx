@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(() => {
       const email=localStorage.getItem("email");
       async function checkSecondYear(){
-        const response=await axios.get("http://localhost:8080/api/vote/check",{params:{email:`${email}`}}).then(response=>{
+        const response=await axios.get(`${process.env.VITE_BACKEND_API}/api/vote/check`,{params:{email:`${email}`}}).then(response=>{
           console.log(response.data);
           if(response.data)setdepartmental(true);
           else setSecondYear(true);

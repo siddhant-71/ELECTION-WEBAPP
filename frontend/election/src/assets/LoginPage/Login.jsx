@@ -20,7 +20,8 @@ const Login = () => {
                     email:`${email.trimStart()}`,
                     password:`${password}`
                 }
-                const response=await axios.post('http://localhost:8080/api/vote/login',loginBody)
+                //const response=await axios.post(`${import.meta.env.VITE_BACKEND_API}/api/vote/login`,loginBody)
+                const response=await axios.post(`https://election-webapp-production.up.railway.app/api/vote/login`)
                                 .then(response=>{ 
                                     localStorage.setItem("token",response.data);
                                     localStorage.setItem("loginTime",Date.now().toString());
