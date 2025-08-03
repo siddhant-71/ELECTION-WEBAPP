@@ -19,4 +19,8 @@ const AutoLogout = () => {
   return null;
 }
 
+<<<<<<< HEAD
 export default AutoLogout
+=======
+export default AutoLogout
+>>>>>>> e94dad97f081f6064982854952d3420d46908cd6
