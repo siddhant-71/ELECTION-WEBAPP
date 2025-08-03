@@ -11,3 +11,4 @@ public class ElectionsApplication {
 	}
 
 }
+//DATASOURCE_PASSWORD=siddhant;DATASOURCE_URL=jdbc:mysql://localhost:3306/elections;DATASOURCE_USER=root;FRONTEND_URL=http://localhost:5173;SPRING_PASSWORD=siddhant;SPRING_USERNAME=siddhant

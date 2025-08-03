@@ -4,7 +4,6 @@ import com.trical.elections.Entities.*;
 import com.trical.elections.Repository.PasswordRepo;
 import com.trical.elections.Repository.TokenRepo;
 import com.trical.elections.Service.AddPasswords;
-import com.trical.elections.Service.LoginService;
 import com.trical.elections.Service.secondYearService;
 import com.trical.elections.Service.thirdYearService;
 import com.trical.elections.util.JwtUtil;
@@ -13,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController

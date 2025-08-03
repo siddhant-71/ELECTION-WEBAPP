@@ -62,7 +62,8 @@ const Vote2 = ({setSecondYear,setdepartmental}) => {
         // }
         
         const token=localStorage.getItem("token");
-        axios.post(`${process.env.VITE_BACKEND_API}/api/vote/juniors`,{
+        const backendUrl=import.meta.env.VITE_APP_URL;
+        axios.post(`${backendUrl}api/vote/juniors`,{
             "email":`${email}`,
             "rollNo":`${email.substring(7,10)}`,
             "cr":`${FullVote[0]}`,

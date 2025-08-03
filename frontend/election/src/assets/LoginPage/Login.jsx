@@ -20,8 +20,8 @@ const Login = () => {
                     email:`${email.trimStart()}`,
                     password:`${password}`
                 }
-                //const response=await axios.post(`${import.meta.env.VITE_BACKEND_API}/api/vote/login`,loginBody)
-                const response=await axios.post(`https://election-webapp-production.up.railway.app/api/vote/login`)
+                const backendUrl=import.meta.env.VITE_APP_URL;
+                const response=await axios.post(`${backendUrl}api/vote/login`,loginBody)
                                 .then(response=>{ 
                                     localStorage.setItem("token",response.data);
                                     localStorage.setItem("loginTime",Date.now().toString());
@@ -32,6 +32,7 @@ const Login = () => {
                                 .catch(error=>{alert(error.response.data);setpassword("")});  
         }   
     }
+    
   return (
     <div className='input-box'>
         <p style={{fontSize:"25px",color:"white"}}>LOGIN HERE</p>

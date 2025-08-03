@@ -47,7 +47,8 @@ const Vote = () => {
         }
         const token=localStorage.getItem("token");
         const email=localStorage.getItem("email");
-        axios.post(`${process.env.VITE_BACKEND_API}/api/vote/seniors`,{
+        const backendUrl=import.meta.env.VITE_APP_URL;
+        axios.post(`${backendUrl}api/vote/seniors`,{
             "email":`${email}`,
             "rollNo":`${email.substring(7,10)}`,
             "dr":`${FullVotes[0]}`,
